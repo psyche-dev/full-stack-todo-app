@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useAuth } from './contexts/AuthContext';
-import api from "./api/axios"
+import { useAuth } from '../contexts/AuthContext';
+import api from "../api/axios"
 
 function Tasks() {
   const [tasks, setTasks] = useState([]);

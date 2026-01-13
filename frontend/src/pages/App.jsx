@@ -1,9 +1,9 @@
-import './App.css'
+import '../styles/App.css'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider, useAuth } from './contexts/AuthContext';
-import Tasks from "./Tasks";
-import Login from "./components/Login";
-import Register from "./components/Register";
+import { AuthProvider, useAuth } from '../contexts/AuthContext';
+import Tasks from "../components/Tasks";
+import Login from "../components/Login";
+import Register from "../components/Register";
 
 function App() {
   return (
