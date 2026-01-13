@@ -16,10 +16,23 @@ namespace TaskManager.Models
 
         [JsonPropertyName("passwordHash")]
         [Required(ErrorMessage = "Password is required")]
-        [StringLength(255, MinimumLength = 6, ErrorMessage = "Password must be between 6 and 255 characters")]
         public string PasswordHash { get; set; } = string.Empty;
 
         [JsonPropertyName("tasks")]
         public ICollection<TaskItem> Tasks { get; set; } = new List<TaskItem>();
+
+        // Method to set hashed password
+        public void SetPassword(string password)
+        {
+            var hasher = new Microsoft.AspNetCore.Identity.PasswordHasher<User>();
+            PasswordHash = hasher.HashPassword(this, password);
+        }
+
+        // Method to verify password
+        public bool VerifyPassword(string password)
+        {
+            var hasher = new Microsoft.AspNetCore.Identity.PasswordHasher<User>();
+            return hasher.VerifyHashedPassword(this, PasswordHash, password) != Microsoft.AspNetCore.Identity.PasswordVerificationResult.Failed;
+        }
     }
 }
